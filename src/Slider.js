@@ -17,16 +17,16 @@ const SliderComponent = () => {
   };
 
   return (
-    <div className="slider-container">
+    <div className="slider-container" style={{position:"relative",zIndex:"-1000000000"}}>
       <Slider {...settings}>
         <div className="slide">
           <img src="https://www.ipmcareer.com/files/2020/06/iresults2-1-1536x610.jpg" alt="Slide 1" />
         </div>
         <div className="slide">
-          <img src="https://via.placeholder.com/800x400?text=Slide+2" alt="Slide 2" />
+          <img src="https://www.ipmcareer.com/files/2020/06/iresults2-1-1536x610.jpg" alt="Slide 2" />
         </div>
         <div className="slide">
-          <img src="https://via.placeholder.com/800x400?text=Slide+3" alt="Slide 3" />
+          <img src="https://www.ipmcareer.com/files/2020/06/iresults2-1-1536x610.jpg" alt="Slide 3" />
         </div>
       </Slider>
     </div>

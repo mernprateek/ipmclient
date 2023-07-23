@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
@@ -11,49 +12,50 @@ const Header = () => {
     { title: 'Contact Us', subsections: ['Address', 'Mail', 'Map', 'Contact Us'] },
     { title: 'Student Zone', subsections: ['Subsection W'] },
   ];
-
-  const [selectedSection, setSelectedSection] = useState('');
-  const [selectedSubsection, setSelectedSubsection] = useState('');
-
-  const handleSectionChange = (section) => {
-    setSelectedSection(section);
-    setSelectedSubsection('');
-  };
-
-  const handleSubsectionChange = (subsection) => {
-    setSelectedSubsection(subsection);
-  };
-
+  const navigate=useNavigate()
   return (
-    <div className="header">
-      
-      <div className="section-dropdowns">
-        {sections.map((section, index) => (
-          <div key={index} className="section-dropdown">
-            <button
-              className={`section-button ${selectedSection === section.title ? 'active' : ''}`}
-              onClick={() => handleSectionChange(section.title)}
-            >
-              {section.title}
-            </button>
-            {selectedSection === section.title && (
-              <div className="subsection-dropdown">
-                {section.subsections.map((subsection, index) => (
-                  <Link
-                    key={index}
-                    to={`/${section.title.replace(/\s+/g, '-').toLowerCase()}/${subsection.replace(/\s+/g, '-').toLowerCase()}`}
-                    className={`subsection-button ${selectedSubsection === subsection ? 'active' : ''}`}
-                    onClick={() => handleSubsectionChange(subsection)}
-                  >
-                    {subsection}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
+    <nav>
+    <div id="logo"><img src="https://i.imgur.com/yqawPSs.png"
+    style={{width:"200px"}}/></div>
+
+    <label for="drop" class="toggle">Menu</label>
+    <input type="checkbox" id="drop" />
+        <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li>
+                <label for="drop-1" class="toggle">About</label>
+                <a href="#">About</a>
+                <input type="checkbox" id="drop-1"/>
+                <ul style={{background :"white"}}>
+               <li>  <a href="#"><Link to="team" preventScrollReset={true} />Our Team</a></li>
+                    <li><a href="#"><Link to="about" preventScrollReset={true} />Our Programs</a></li>  
+                </ul> 
+            </li>
+            <li>
+
+            <label for="drop-2" class="toggle">Preparation Module</label>
+            <a href="#">Preparation Module</a>
+            <input type="checkbox" id="drop-2"/>
+            <ul style={{background :"white"}}>
+                <li><a href="#">Mentorship Course</a></li>
+                <li><a href="#">Classroom Course</a></li>
+                <li><a href="#">Online Course</a></li>
+                <li><a href="#">Short Term Course</a></li>
+                <li><a href="#">Test Series</a></li>
+                <li>
+                   
+                   
+                   
+            
+                </li>
+            </ul>
+            </li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Student Zone</a></li>
+           
+        </ul>
+    </nav>
   );
 };
 
